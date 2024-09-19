@@ -79,6 +79,9 @@ public class UserDaoImp extends DBConnectMySQL implements IUserDao {
 			ps.setString(4, user.getPassword());
 			ps.setString(5, user.getImages());
 			ps.setString(6, user.getFullname());
+			ps.setInt(7, user.getRoleid());
+			ps.setString(8, user.getPhone());
+			ps.setDate(9, user.getCreatedDate());
 
 			ps.executeUpdate();
 
@@ -114,6 +117,66 @@ public class UserDaoImp extends DBConnectMySQL implements IUserDao {
 		return null;
 	}
 
+	@Override
+	public boolean checkExistEmail(String email) {
+		boolean duplicate = false;
+		String query = "select * from users where email = ?";
+		try {
+			conn = super.getDatabaseConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, email);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				duplicate = true;
+			}
+			ps.close();
+			conn.close();
+		} catch (Exception ex) {
+
+		}
+		return duplicate;
+	}
+
+	@Override
+	public boolean checkExistUsername(String username) {
+		boolean duplicate = false;
+		String query = "select * from users where username = ?";
+		try {
+			conn = super.getDatabaseConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, username);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				duplicate = true;
+			}
+			ps.close();
+			conn.close();
+		} catch (Exception ex) {
+			
+		}
+		return duplicate;
+	}
+
+	@Override
+	public boolean checkExistPhone(String phone) {
+		boolean duplicate = false;
+		String query = "select * from users where phone = ?";
+		try {
+			conn = super.getDatabaseConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, phone);
+			rs = ps.executeQuery();
+			if (rs.next()) {
+				duplicate = true;
+			}
+			ps.close();
+			conn.close();
+		} catch (Exception ex) {
+			
+		}
+		return duplicate;
+	}
+
 	public static void main(String[] args) {
 		IUserDao userDao = new UserDaoImp();
 
@@ -127,5 +190,4 @@ public class UserDaoImp extends DBConnectMySQL implements IUserDao {
 
 		System.out.println(userDao.findById(1));
 	}
-
 }
