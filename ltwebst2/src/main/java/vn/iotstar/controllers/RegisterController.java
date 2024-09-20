@@ -41,7 +41,7 @@ public class RegisterController extends HttpServlet {
 		req.getRequestDispatcher(Constant.REGISTER).forward(req, resp);
 	}
 
-	@SuppressWarnings("static-access")
+	//@SuppressWarnings("static-access")
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html");

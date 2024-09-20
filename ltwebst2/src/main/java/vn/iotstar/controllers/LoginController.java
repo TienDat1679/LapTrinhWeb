@@ -18,7 +18,7 @@ import vn.iotstar.utils.Constant;
 public class LoginController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	IUserService service = new UserServiceImp(); // Lay toan bo ham trong service
+	IUserService service = new UserServiceImp(); // get all functions from service
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,11 +31,12 @@ public class LoginController extends HttpServlet {
 		resp.setCharacterEncoding("UTF-8");
 		req.setCharacterEncoding("UTF-8");
 
-		// Lay tham so tu views
+		// get parameters from views
 		String username = req.getParameter("uname");
 		String password = req.getParameter("psw");
 		String remember = req.getParameter("remember");
-		// Kiem tra tham so
+		
+		// check parameters
 		boolean isRememberMe = false;
 		if ("on".equals(remember)) {
 			isRememberMe = true;
@@ -47,6 +48,7 @@ public class LoginController extends HttpServlet {
 			req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
 			return;
 		}
+		
 		// Xu ly bai toan
 		UserModel user = service.login(username, password);
 		if (user != null) {
