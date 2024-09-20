@@ -80,6 +80,11 @@ button:hover {
 		width: 100%;
 	}
 }
+/* Set a grey background color and center the text of the "sign in" section */
+.signin {
+  background-color: #f1f1f1;
+  text-align: center;
+}
 </style>
 
 <body>
@@ -110,20 +115,19 @@ button:hover {
 			<label for="psw-repeat"><b>Repeat Password</b></label> 
 			<input type="password" placeholder="Repeat Password" name="psw-repeat" required> 
 			
-			<label> 
-				<input type="checkbox" checked="checked" name="remember" style="margin-bottom: 15px"> Remember me
-			</label>
 
 			<p>
 				By creating an account you agree to our <a href="#"
 					style="color: dodgerblue">Terms And Privacy</a>.
 			</p>
 
-			<div class="clearfix">
-				<button type="button" class="cancelbtn">Cancel</button>
-				<button type="submit" class="signupbtn">Sign Up</button>
-			</div>
+			<button type="submit" class="registerbtn">Register</button>
 		</div>
+		
+		<div class="container signin">
+    		<p>Already have an account? <a href="login">Sign in</a>.</p>
+  		</div>
+		
 	</form>
 </body>
 </html>
