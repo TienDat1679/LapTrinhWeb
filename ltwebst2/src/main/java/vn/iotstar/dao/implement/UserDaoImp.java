@@ -176,6 +176,25 @@ public class UserDaoImp extends DBConnectMySQL implements IUserDao {
 		}
 		return duplicate;
 	}
+	
+	@Override
+	public void updatePassword(String email, String password) {
+		String sql = "UPDATE users SET password=? WHERE email=?";
+		try {
+			conn = super.getDatabaseConnection();
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, password);
+			ps.setString(2, email);
+			
+			ps.executeUpdate();
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+	}
+	
 
 	public static void main(String[] args) {
 		IUserDao userDao = new UserDaoImp();
@@ -190,4 +209,6 @@ public class UserDaoImp extends DBConnectMySQL implements IUserDao {
 
 		System.out.println(userDao.findById(1));
 	}
+
+	
 }

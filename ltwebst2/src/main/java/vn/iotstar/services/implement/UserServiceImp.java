@@ -55,4 +55,12 @@ public class UserServiceImp implements IUserService {
 		return userDao.checkExistPhone(phone);
 	}
 
+	@Override
+	public void updatePassword(String email, String password) {
+		// TODO Auto-generated method stub
+		userDao.updatePassword(email, password);
+		
+	}
+	
+	
 }
