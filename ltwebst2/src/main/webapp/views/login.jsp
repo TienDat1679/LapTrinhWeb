@@ -72,13 +72,13 @@ span.psw {
 </style>
 </head>
 <body>
-	<h2>Login Form</h2>
+	<h2 style="text-align: center;">Login Form</h2>
 	<form action="/ltwebst2/login" method="post">
 		<c:if test="${alert !=null}">
 			<h3 class="alert alert-danger">${alert}</h3>
 		</c:if>
 		<div class="container">
-			<label for="uname"><b>Use Name</b></label> <input type="text"
+			<label for="uname"><b>User Name</b></label> <input type="text"
 				placeholder="Enter Username" name="uname" required> 
 			
 			<label for="psw"><b>Password</b></label> <input type="password"
@@ -86,17 +86,14 @@ span.psw {
 
 			<button type="submit">Login</button>
 			
-			<label> <input type="checkbox" checked="checked"
-				name="remember"> Remember me
-			</label>
+			<label> <input type="checkbox" name="remember"> Remember me </label>
 			
 			<p>
-				Forget <a href="#" style="color: dodgerblue">password?</a>.
+				Forget <a href="forgotpassword" style="color: dodgerblue">password?</a>.
 			</p>
 		</div>
 
 		<div class="container" style="background-color: #f1f1f1">
-			<button type="button" class="cancelbtn">Cancel</button>
 			<span  class="psw">
 				If you don't have an account <a href="register">Click Here</a>
 			</span>
