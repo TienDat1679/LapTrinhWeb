@@ -13,7 +13,7 @@ import vn.iotstar.services.IUserService;
 import vn.iotstar.services.implement.UserServiceImp;
 import vn.iotstar.utils.Constant;
 
-@WebServlet(urlPatterns = { "/register" })
+@WebServlet(urlPatterns = { "/Path.REGISTER" })
 public class RegisterController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -38,7 +38,7 @@ public class RegisterController extends HttpServlet {
 //				}
 //			}
 //		}
-		req.getRequestDispatcher(Constant.REGISTER).forward(req, resp);
+		req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp);
 	}
 
 	//@SuppressWarnings("static-access")
@@ -60,25 +60,25 @@ public class RegisterController extends HttpServlet {
 		if (service.checkExistEmail(email)) {
 			alertMsg = "Email đã tồn tại!";
 			req.setAttribute("alert", alertMsg);
-			req.getRequestDispatcher(Constant.REGISTER).forward(req, resp);
+			req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp);
 			return;
 		}
 		if (service.checkExistUsername(username)) {
 			alertMsg = "Tên người dùng đã tồn tại!";
 			req.setAttribute("alert", alertMsg);
-			req.getRequestDispatcher(Constant.REGISTER).forward(req, resp);
+			req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp);
 			return;
 		}
 		if (service.checkExistPhone(phone)) {
 			alertMsg = "Số điện thoại đã tồn tại!";
 			req.setAttribute("alert", alertMsg);
-			req.getRequestDispatcher(Constant.REGISTER).forward(req, resp);
+			req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp);
 			return;
 		}
 		if (!password.equals(repassword)) {
 		    alertMsg = "Mật khẩu và mật khẩu xác nhận không khớp!";
 		    req.setAttribute("alert", alertMsg);
-		    req.getRequestDispatcher(Constant.REGISTER).forward(req, resp);
+		    req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp);
 		    return;
 		}
 		
@@ -91,7 +91,7 @@ public class RegisterController extends HttpServlet {
 		} else {
 			alertMsg = "System error!";
 			req.setAttribute("alert", alertMsg);
-			req.getRequestDispatcher(Constant.REGISTER).forward(req, resp);
+			req.getRequestDispatcher(Constant.Path.REGISTER).forward(req, resp);
 		}
 	}
 

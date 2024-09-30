@@ -1,133 +1,81 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core"%>
-<%@ taglib prefix="fmt" uri="jakarta.tags.fmt"%>
-<%@ taglib prefix="fn" uri="jakarta.tags.functions"%>
-<!DOCTYPE html>
-<html>
-<style>
-body {
-	font-family: Arial, Helvetica, sans-serif;
-}
+<%@ include file="/commons/taglib.jsp" %>
 
-* {
-	box-sizing: border-box
-}
-
-/* Full-width input fields */
-input[type=text], input[type=password] {
-	width: 100%;
-	padding: 15px;
-	margin: 5px 0 22px 0;
-	display: inline-block;
-	border: none;
-	background: #f1f1f1;
-}
-
-input[type=text]:focus, input[type=password]:focus {
-	background-color: #ddd;
-	outline: none;
-}
-
-hr {
-	border: 1px solid #f1f1f1;
-	margin-bottom: 25px;
-}
-
-/* Set a style for all buttons */
-button {
-	background-color: #04AA6D;
-	color: white;
-	padding: 14px 20px;
-	margin: 8px 0;
-	border: none;
-	cursor: pointer;
-	width: 100%;
-	opacity: 0.9;
-}
-
-button:hover {
-	opacity: 1;
-}
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-	padding: 14px 20px;
-	background-color: #f44336;
-}
-
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
-	float: left;
-	width: 50%;
-}
-
-/* Add padding to container elements */
-.container {
-	padding: 16px;
-}
-
-/* Clear floats */
-.clearfix::after {
-	content: "";
-	clear: both;
-	display: table;
-}
-
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-	.cancelbtn, .signupbtn {
-		width: 100%;
-	}
-}
-/* Set a grey background color and center the text of the "sign in" section */
-.signin {
-  background-color: #f1f1f1;
-  text-align: center;
-}
-</style>
-
-<body>
-	<form action="/ltwebst2/register" method="post" style="border: 1px solid #ccc">
-		<c:if test="${alert !=null}">
+          <!-- BEGIN CONTENT -->
+          <div class="col-md-12 col-sm-12">
+            <h1>Create an account</h1>
+            <div class="content-form-page">
+              <div class="row">
+                <div class="col-md-7 col-sm-7">
+                		<c:if test="${alert !=null}">
 			<h3 class="alert alert-danger">${alert}</h3>
 		</c:if>
-		<div class="container">
-			<h1>Sign Up</h1>
-			<p>Please fill in this form to create an account.</p>
-			<hr>
+                  <form action="${pageContext.request.contextPath}/register" method="post" class="form-horizontal" role="form">
+                    <fieldset>
+                      <legend>Your personal details</legend>
+                      <div class="form-group">
+                        <label for="uname" class="col-lg-4 control-label">User Name <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                          <input type="text" class="form-control" id="username" name="uname" required>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="fullName" class="col-lg-4 control-label">Full Name <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                          <input type="text" class="form-control" id="fullname" name="fullName" required>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="email" class="col-lg-4 control-label">Email <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                          <input type="text" class="form-control" id="email" name="email" required>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="phone" class="col-lg-4 control-label">Phone Number <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                          <input type="text" class="form-control" id="phone" name="phone" required>
+                        </div>
+                      </div>
+                    </fieldset>
+                    <fieldset>
+                      <legend>Your password</legend>
+                      <div class="form-group">
+                        <label for="psw" class="col-lg-4 control-label">Password <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                          <input type="password" class="form-control" id="password" name="psw" required>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="psw-repeat" class="col-lg-4 control-label">Confirm password <span class="require">*</span></label>
+                        <div class="col-lg-8">
+                          <input type="password" class="form-control" id="confirm-password" name="psw-repeat" required>
+                        </div>
+                      </div>
+                    </fieldset>
+                    <fieldset>
+                     
+                    </fieldset>
+                    <div class="row">
+                      <div class="col-lg-8 col-md-offset-4 padding-left-0 padding-top-20">                        
+                        <button type="submit" class="btn btn-primary">Create an account</button>
+                        <button type="button" class="btn btn-default">Cancel</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="col-md-4 col-sm-4 pull-right">
+                  <div class="form-info">
+                    <h2><em>Important</em> Information</h2>
+                    <p>Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed sit nonumy nibh sed euismod ut laoreet dolore magna aliquarm erat sit volutpat. Nostrud exerci tation ullamcorper suscipit lobortis nisl aliquip  commodo quat.</p>
 
-			<label for="uname"><b>User Name</b></label> 
-			<input type="text" placeholder="Enter User Name" name="uname" required>
-			
-			<label for="fullName"><b>Full Name</b></label> 
-			<input type="text" placeholder="Enter Full Name" name="fullName" required>
-			
-			<label for="email"><b>Email</b></label> 
-			<input type="text" placeholder="Enter Email" name="email" required> 
-			
-			<label for="phone"><b>Phone Number</b></label> 
-			<input type="text" placeholder="Enter Phone Number" name="phone" required>
-			
-			<label for="psw"><b>Password</b></label> 
-			<input type="password" placeholder="Enter Password" name="psw" required> 
-			
-			<label for="psw-repeat"><b>Repeat Password</b></label> 
-			<input type="password" placeholder="Repeat Password" name="psw-repeat" required> 
-			
+                    <p>Duis autem vel eum iriure at dolor vulputate velit esse vel molestie at dolore.</p>
 
-			<p>
-				By creating an account you agree to our <a href="#"
-					style="color: dodgerblue">Terms And Privacy</a>.
-			</p>
-
-			<button type="submit" class="registerbtn">Register</button>
-		</div>
-		
-		<div class="container signin">
-    		<p>Already have an account? <a href="login">Sign in</a>.</p>
-  		</div>
-		
-	</form>
-</body>
-</html>
+                    <button type="button" class="btn btn-default">More details</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- END CONTENT -->
