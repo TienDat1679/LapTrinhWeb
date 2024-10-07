@@ -37,16 +37,17 @@ public class CategoryController extends HttpServlet {
 			List<CategoryModel> list = cateService.findAll();
 			req.setAttribute("listcate", list);
 			req.getRequestDispatcher("/views/admin/category-list.jsp").forward(req, resp);
-		} else if (url.contains("add")) {
+		} 
+		else if (url.contains("add")) {
 			req.getRequestDispatcher("/views/admin/category-add.jsp").forward(req, resp);
-		} else if (url.contains("edit")) {
+		} 
+		else if (url.contains("edit")) {
 			int id = Integer.parseInt(req.getParameter("id"));
-			
 			CategoryModel category = cateService.findById(id);
 			req.setAttribute("cate", category);
-			
 			req.getRequestDispatcher("/views/admin/category-edit.jsp").forward(req, resp);
-		} else if (url.contains("delete")) {
+		} 
+		else if (url.contains("delete")) {
 			int id = Integer.parseInt(req.getParameter("id"));
 			cateService.delete(id);
 			resp.sendRedirect(req.getContextPath() + "/admin/categories");
@@ -63,6 +64,7 @@ public class CategoryController extends HttpServlet {
 		if (url.contains("insert")) {
 			String categoryname = req.getParameter("categoryname");
 			int status = Integer.parseInt(req.getParameter("status"));
+			String images = req.getParameter("images1");
 			
 			CategoryModel category = new CategoryModel();
 			category.setCategoryname(categoryname);
@@ -77,6 +79,7 @@ public class CategoryController extends HttpServlet {
 			}
 			try {
 				Part part = req.getPart("images");
+				System.out.println(part);
 				if (part.getSize() > 0) {
 					String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
 					// rename file
@@ -87,7 +90,11 @@ public class CategoryController extends HttpServlet {
 					part.write(uploadPath + "/" + fname);
 					// ghi ten file vao data
 					category.setImages(fname);
-				} else {
+				} 
+				else if(images != null) {
+					category.setImages(images);
+				}
+				else {
 					category.setImages("avatar.png");
 				}
 			} catch (Exception e) {

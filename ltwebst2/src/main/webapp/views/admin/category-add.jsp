@@ -7,7 +7,7 @@
 	
 	<label for="images">Images: </label><br>
 	<div style="width:100px; height:100px">
-	<img alt="images" id="imagess" src="" width="150px" height="150px" /> 
+	<img alt="images" id="imagess" src="" width="100px" height="100px" /> 
 	</div><br>
 	Nhập link: <input type="text" id="images1" name="images1"><br>
 	Hoặc tải file:

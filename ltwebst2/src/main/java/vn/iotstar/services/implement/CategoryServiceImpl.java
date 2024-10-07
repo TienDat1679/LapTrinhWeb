@@ -24,6 +24,11 @@ public class CategoryServiceImpl extends DBConnectMySQL implements ICategoryServ
 
 	@Override
 	public void insert(CategoryModel category) {
+//		CategoryModel cate = this.findName(category.getCategoryname());
+//		
+//		if (cate == null) {
+//			cateDao.insert(category);
+//		} 
 		cateDao.insert(category);
 		
 	}
