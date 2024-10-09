@@ -22,10 +22,9 @@
 					<c:url value="/image?fname=${cate.images }" var="imgUrl"></c:url>
 				</c:if>			
 				<c:if test="${cate.images.substring(0,5) == 'https'}">
-					<c:url value="${cate.images }" var="imgUrl"></c:url>
+					<c:url value="${cate.images}" var="imgUrl"></c:url>
 				</c:if>	
-				<img height="150" width="200" src="${imgUrl}" />
-			</td>
+				<img height="150" width="200" src="${imgUrl}" /></td>
 			<td>${cate.categoryid }</td>
 			<td>${cate.categoryname }</td>
 			<td>
@@ -39,6 +38,7 @@
 			<td>
 				<a href="<c:url value='/admin/category/edit?id=${cate.categoryid }'/>">Sửa</a> 
 				| <a href="<c:url value='/admin/category/delete?id=${cate.categoryid }'/>">Xóa</a>
+				| <a href="<c:url value='/admin/videos?id=${cate.categoryid }'/>">Video List</a>
 			</td>
 		</tr>
 	</c:forEach>

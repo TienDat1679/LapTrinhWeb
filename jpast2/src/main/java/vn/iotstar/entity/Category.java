@@ -43,8 +43,6 @@ public class Category implements Serializable {
 	
 	@OneToMany(mappedBy = "category")
 	private List<Video> videos;
-
-	
 	
 	public Video addVideo(Video video) {
 		getVideos().add(video);

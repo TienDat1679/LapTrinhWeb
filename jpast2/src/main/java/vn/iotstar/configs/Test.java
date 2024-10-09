@@ -12,14 +12,14 @@ public class Test {
 		cate.setCategoryname("Oppo A21"); 
 		cate.setImages("abcd.jpg");
 		cate.setStatus(0);
-//		Video video = new Video();
-//		video.setVideoId("v001");
-//		video.setTitle("test");
-//		video.setCategory (cate);
+		Video video = new Video();
+		video.setVideoId("vd002");
+		video.setTitle("test");
+		video.setCategory (cate);
 		try {
 			trans.begin();
-			enma.persist(cate);
-			//enma.persist(video);
+			//enma.persist(cate);
+			enma.persist(video);
 			trans.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
